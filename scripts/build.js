@@ -3,7 +3,7 @@ import { mkdir, readFile } from 'node:fs/promises'
 import { zip } from 'zip-a-folder'
 
 const build = async () => {
-  const manifest = JSON.parse(await readFile('manifest.json'))
+  const manifest = JSON.parse(await readFile('package.json'))
   const outdir = 'build'
   const outfile = `build/viframe-extensions-v${manifest.version}.zip`
   if (!existsSync(outdir)) await mkdir(outdir)
