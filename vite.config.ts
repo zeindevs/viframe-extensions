@@ -18,6 +18,7 @@ export default defineConfig({
 					dest: './',
 					transform: (contents) => {
 						const parsed = JSON.parse(contents)
+						parsed.$schema = null
 						parsed.version = packageJson.version
 						return JSON.stringify(parsed, null, 2)
 					},
@@ -34,7 +35,6 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				popup: path.resolve(__dirname, './index.html'),
-				options: path.resolve(__dirname, './options.html'),
 				background: path.resolve(__dirname, './src/background.ts'),
 				inject: path.resolve(__dirname, './src/inject.ts'),
 			},
